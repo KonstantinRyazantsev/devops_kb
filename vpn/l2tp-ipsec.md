@@ -1,4 +1,4 @@
-How to setup L2TP/IPSEC VPN server on Ubuntu. Tested on Ubuntu 24.04
+How to setup L2TP/IKEv2/IPSEC VPN server on Ubuntu. Tested on Ubuntu 24.04
 
 Install docker-compose if needed:
 
@@ -46,3 +46,15 @@ Run:
 docker-compose up -d
 ```
 
+Manage IKEv2 clients.
+
+```bash
+# Add a new client (using default options)
+docker exec -it ipsec-vpn-server ikev2.sh --addclient [client name]
+# Export configuration for an existing client
+docker exec -it ipsec-vpn-server ikev2.sh --exportclient [client name]
+# List existing clients
+docker exec -it ipsec-vpn-server ikev2.sh --listclients
+# Show usage
+docker exec -it ipsec-vpn-server ikev2.sh -h
+```
