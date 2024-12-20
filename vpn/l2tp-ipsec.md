@@ -19,7 +19,7 @@ services:
   ipsec-vpn-server:
     image: hwdsl2/ipsec-vpn-server
     container_name: ipsec-vpn-server
-    env_file: ./vpn.env
+    env_file: ./.env
     restart: always
     privileged: true
     ports:
