@@ -1,6 +1,17 @@
 How to setup L2TP/IPSEC VPN server on Ubuntu. Tested on Ubuntu 24.04
 
-create `docker-compose.yaml` file:
+Install docker-compose if needed:
+
+```bash
+sudo apt update && sudo apt -y install htop sysstat iftop iotop jq
+sudo curl -fsSL https://get.docker.com/ | sh
+VER_DOCK=`curl -s  https://api.github.com/repos/docker/compose/releases|jq -r ".[].tag_name,.[].prerelease"|grep -v 'rc'|sed -n '1p'`
+sudo curl -L https://github.com/docker/compose/releases/download/$VER_DOCK/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
+sudo usermod -aG docker $USER
+```
+
+Create `docker-compose.yaml` file:
 
 ```yaml
 version: "3.5"
@@ -19,7 +30,7 @@ services:
       - /lib/modules:/lib/modules:ro
 ```
 
-create `.env` file: like
+Create `.env` file: like
 
 ```
 VPN_IPSEC_PSK='secret'
@@ -29,16 +40,9 @@ VPN_ADDL_USERS=vpnuser1 vpnuser2
 VPN_ADDL_PASSWORDS=vpnuser1_password vpnuser2_password
 ```
 
-execute:
+Run:
 
-```bash
-sudo apt update && sudo apt -y install htop sysstat iftop iotop jq
-sudo curl -fsSL https://get.docker.com/ | sh
-VER_DOCK=`curl -s  https://api.github.com/repos/docker/compose/releases|jq -r ".[].tag_name,.[].prerelease"|grep -v 'rc'|sed -n '1p'`
-sudo curl -L https://github.com/docker/compose/releases/download/$VER_DOCK/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
-sudo chmod +x /usr/bin/docker-compose
-sudo usermod -aG docker $USER
-
-docker-compose down && docker-compose up -d
+```
+docker-compose up -d
 ```
 
