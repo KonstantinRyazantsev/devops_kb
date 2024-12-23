@@ -57,4 +57,7 @@ docker exec -it ipsec-vpn-server ikev2.sh --exportclient [client name]
 docker exec -it ipsec-vpn-server ikev2.sh --listclients
 # Show usage
 docker exec -it ipsec-vpn-server ikev2.sh -h
+# Copy a client config file from the container
+# to the current directory on the Docker host
+docker cp ipsec-vpn-server:/etc/ipsec.d/vpnclient.p12 ./
 ```
