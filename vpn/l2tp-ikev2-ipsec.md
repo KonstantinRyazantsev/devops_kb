@@ -1,5 +1,9 @@
 How to setup L2TP/IKEv2/IPSEC VPN server on Ubuntu. Tested on Ubuntu 24.04
 
+details: 
+* https://github.com/hwdsl2/docker-ipsec-vpn-server/blob/master/README.md
+* https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/README.md
+
 Install docker-compose if needed:
 
 ```bash
