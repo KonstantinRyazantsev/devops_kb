@@ -134,3 +134,9 @@ VPN Clients:
   * `Public key` - get the public key from your `vless-reality.keys` file
   * `ShortID` - Select one of the `ShortIds` specified in the `config.json`
   * `SpiderX` - keep empty
+
+Configure Keenetic router to use XRay
+
+* https://www.youtube.com/watch?v=rKbENP80ECo
+* https://rockblack.su/vpn/dopolnitelno/vless-keenetic
+* https://habr.com/ru/articles/760052/
